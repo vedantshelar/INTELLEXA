@@ -36,10 +36,10 @@ router.post("/register", async (req, res) => {
 
     // ✅ Send token as COOKIE
     res.cookie("token", token, {
-      httpOnly: true, // JS cannot access cookie
-      secure: false, // true in production (HTTPS)
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+      httpOnly: true,
+      secure: true,          // must be true for HTTPS
+      sameSite: "none",      // required for cross-site cookies
+      maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
     return res.json({
@@ -90,9 +90,9 @@ router.post("/login", async (req, res) => {
     // Send cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // true in production
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      secure: true,          // must be true for HTTPS
+      sameSite: "none",      // required for cross-site cookies
+      maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
     return res.json({
@@ -150,8 +150,8 @@ router.post("/logout", (req, res) => {
 
     res.clearCookie("token", {
       httpOnly: true,
-      secure: false, // true in production (https)
-      sameSite: "lax"
+      secure: true, // true in production (https)
+      sameSite: "none"
     });
 
     res.json({
@@ -169,7 +169,7 @@ router.post("/logout", (req, res) => {
     });
 
   }
-});
+}); 
 
 
 module.exports = router;
