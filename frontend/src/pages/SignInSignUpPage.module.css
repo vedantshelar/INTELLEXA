@@ -1,0 +1,129 @@
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eff6ff, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 36px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+  
+  .logo {
+    color: #2563eb;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 24px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .input {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #2563eb;
+  }
+  
+  .primaryBtn {
+    margin-top: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .primaryBtn:hover {
+    background: #1e40af;
+  }
+  
+  .divider {
+    margin: 24px 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #9ca3af;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .divider span {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+  
+  .socialButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .socialBtn {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .socialBtn:hover {
+    background: #eff6ff;
+  }
+  
+  .toggleText {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #4b5563;
+  }
+  
+  .toggleLink {
+    color: #2563eb;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .footerText {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #9ca3af;
+  }
+  
+  /* 📱 Mobile Responsive */
+  @media (max-width: 480px) {
+    .card {
+      padding: 28px 22px;
+    }
+  }
+  

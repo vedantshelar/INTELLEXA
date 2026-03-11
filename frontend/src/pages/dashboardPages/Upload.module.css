@@ -1,0 +1,256 @@
+.container {
+    padding: 24px;
+    background: #f5f9ff;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+  }
+  
+  /* ================= HEADER ================= */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  
+  .headerIcon {
+    width: 40px;
+    height: 40px;
+    background: #dbeafe;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+  }
+  
+  .header h1 {
+    font-size: 28px;
+  }
+  
+  .header p {
+    color: #6b7280;
+  }
+  
+  /* ================= MAIN WRAPPER ================= */
+  .mainWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* ================= INDUSTRY ================= */
+  .industryCard {
+    background: white;
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    margin-bottom: 18px;
+  }
+  
+  .industryCard label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  .industryCard select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+  }
+  
+  /* ================= UPLOAD CARD ================= */
+  .uploadCard {
+    background: white;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  
+  .dropZone {
+    border: 2px dashed #93c5fd;
+    border-radius: 14px;
+    padding: 30px 16px;
+    position: relative;
+    text-align: center;
+  }
+  
+  .uploadIcon {
+    width: 50px;
+    height: 50px;
+    background: #e0ecff;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+  }
+  
+  .mainText {
+    font-weight: 600;
+  }
+  
+  .subText {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 10px;
+  }
+  
+  .dropZone input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* ================= FILE INFO ================= */
+  .fileInfo {
+    font-size: 13px;
+    color: #4b5563;
+    margin-top: 14px;
+  }
+  
+  .fileName {
+    font-weight: 500;
+    color: #2563eb;
+  }
+  
+  /* ================= BUTTON ================= */
+  .uploadBtn {
+    margin-top: 16px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .uploadBtn:hover {
+    background: #1d4ed8;
+  }
+  
+  /* ================= STATUS ================= */
+  .status {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+  
+  /* ================= INSTRUCTIONS ================= */
+  .instructions {
+    max-width: 1200px;
+    margin: 28px auto 0;
+    background: white;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* ================= FOOTER ================= */
+  .footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 13px;
+    color: #6b7280;
+  }
+  
+  .lockIcon {
+    width: 24px;
+    height: 24px;
+    background: #dbeafe;
+    border-radius: 50%;
+    margin: 0 auto 6px;
+  }
+
+  /* ================= SAMPLE DATA SECTION ================= */
+
+.sampleSection {
+  margin-top: 25px;
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* LEFT CONTENT */
+
+.sampleContent {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ICON */
+
+.sampleIcon {
+  width: 50px;
+  height: 50px;
+  background: #e0ecff;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #2563eb;
+  font-size: 20px;
+}
+
+/* TEXT */
+
+.sampleText h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #1f2937;
+}
+
+.sampleText p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* DOWNLOAD BUTTON */
+
+.sampleDownloadBtn {
+  background: #2563eb;
+  color: white;
+  border: none;
+
+  padding: 12px 18px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+  font-weight: 500;
+
+  transition: all 0.25s ease;
+}
+
+.sampleDownloadBtn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+  
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 768px) {
+
+    .mainWrapper {
+      width: 100%;
+    }
+
+    .sampleSection{
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  
+  .sampleDownloadBtn{
+      width:100%;
+      justify-content:center;
+  }
+  
+  }
+  

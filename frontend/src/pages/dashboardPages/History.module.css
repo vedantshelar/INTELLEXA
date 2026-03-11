@@ -1,0 +1,181 @@
+.container {
+  padding: 25px;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  color: #111827;
+}
+
+.header p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+}
+
+.searchInput {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.filterSelect {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ================= GRID ================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* ================= CARD ================= */
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* ================= TOP ================= */
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titleSection h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #111827;
+}
+
+.titleSection i {
+  cursor: pointer;
+  color: #2563eb;
+}
+
+/* ================= EDIT ================= */
+
+.editWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.editWrapper input {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+/* ================= ACTION ICONS ================= */
+
+.actions {
+  display: flex;
+  gap: 14px;
+}
+
+.actions i {
+  cursor: pointer;
+  color: #6b7280;
+  transition: 0.2s;
+}
+
+.actions i:hover {
+  color: #2563eb;
+}
+
+.actions .fa-trash:hover {
+  color: #ef4444;
+}
+
+/* ================= META ================= */
+
+.meta {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ================= BUTTON ================= */
+
+.viewBtn {
+  margin-top: 18px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.viewBtn:hover {
+  background: #1d4ed8;
+}
+
+/* ================= EMPTY ================= */
+
+.emptyState {
+  text-align: center;
+  margin-top: 120px;
+}
+
+.emptyState i {
+  font-size: 50px;
+  color: #9ca3af;
+}
+
+.emptyState button {
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}

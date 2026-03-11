@@ -1,0 +1,242 @@
+.container {
+    padding: 20px;
+    background: #f5f9ff;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+  }
+  
+  /* Header */
+  .header {
+    margin-bottom: 24px;
+  }
+  
+  .header h1 {
+    font-size: 26px;
+    color: #1f2937;
+  }
+  
+  .header p {
+    color: #6b7280;
+  }
+  
+  /* Summary Cards */
+  .summaryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .card h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    color: #4b5563;
+  }
+  
+  .status {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  /* Card Variants */
+  .positive {
+    border-left: 4px solid #22c55e;
+  }
+  
+  .warning {
+    border-left: 4px solid #f59e0b;
+  }
+  
+  .neutral {
+    border-left: 4px solid #3b82f6;
+  }
+  
+  .alert {
+    border-left: 4px solid #ef4444;
+    background: #fff5f5;
+  }
+  
+  /* Sections */
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  .section h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+  
+  /* Detailed Insights */
+  .insightItem {
+    background: white;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  }
+  
+  .insightItem h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  
+  .insightItem p {
+    font-size: 14px;
+    color: #4b5563;
+  }
+  
+  .recommendation {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #2563eb;
+  }
+  
+  /* Recommendations */
+  .list {
+    list-style: disc;
+    padding-left: 20px;
+    color: #374151;
+    margin-bottom: 12px;
+  }
+  
+  .cta {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .cta:hover {
+    background: #1d4ed8;
+  }
+
+  /* Recommendation Grid */
+.recommendationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.recommendCard {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.recommendCard:hover {
+  transform: translateY(-4px);
+}
+
+.recHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recIcon {
+  font-size: 22px;
+}
+
+.recommendCard h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #1f2937;
+}
+
+.recommendCard p {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* Priority Tags */
+.priorityHigh {
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+.priorityMedium {
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+/* Action Buttons */
+.actionBar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.ctaPrimary:hover {
+  background: #1d4ed8;
+}
+
+.ctaSecondary {
+  background: white;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 30px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 22px;
+    }
+  }
+  
+
+  /* Mobile */
+@media (max-width: 768px) {
+  .actionBar {
+      flex-direction: column;
+  }
+}

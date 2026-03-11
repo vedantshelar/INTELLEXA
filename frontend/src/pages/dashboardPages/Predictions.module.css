@@ -1,0 +1,217 @@
+.container {
+    padding: 20px;
+    background: #f5f9ff;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+}
+
+/* Header */
+.header {
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 26px;
+    color: #1f2937;
+}
+
+.header p {
+    color: #6b7280;
+}
+
+/* Summary Cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* Confidence */
+.high {
+    color: #22c55e;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.medium {
+    color: #f59e0b;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.low {
+    color: #ef4444;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Sections */
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+/* Insight Cards */
+.insight {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.insight h4 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.insight p {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.insight span {
+    font-size: 12px;
+    color: #2563eb;
+}
+
+.sectionSub {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 16px;
+}
+
+/* Recommendation Grid */
+.recommendationGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.recommendCard {
+    background: white;
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+}
+
+.recommendCard:hover {
+    transform: translateY(-4px);
+}
+
+.recHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.recIcon {
+    font-size: 22px;
+}
+
+.recommendCard h4 {
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: #1f2937;
+}
+
+.recommendCard p {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* Priority Tags */
+.priorityHigh {
+    background: #fee2e2;
+    color: #b91c1c;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+.priorityMedium {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+/* Action Buttons */
+.actionBar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ctaPrimary {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.ctaPrimary:hover {
+    background: #1d4ed8;
+}
+
+.ctaSecondary {
+    background: white;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+    padding: 12px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 22px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .actionBar {
+        flex-direction: column;
+    }
+}
