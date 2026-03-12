@@ -6,6 +6,13 @@ app = Flask(__name__)
 
 port = int(os.environ.get("PORT", 10000))
 
+@app.route("/")
+def home():
+    return {
+        "status": "Intellexa ML Service Running",
+        "service": "ML Prediction API"
+    }
+
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
