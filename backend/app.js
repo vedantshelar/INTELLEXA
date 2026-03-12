@@ -224,7 +224,7 @@ app.post("/data", upload.single("file"),protect,async (req, res, next) => {
   } catch (error) {
     return res.status(400).json({
       success:false,
-      message:"Error Occured During processing file!"
+      message:error
     });
   }
 });
@@ -247,7 +247,7 @@ app.get("/businessData", protect, async (req, res) => {
 
     return res.status(500).json({
       success: false,
-      message: "Failed to fetch business data"
+      message: error
     });
   }
 });
