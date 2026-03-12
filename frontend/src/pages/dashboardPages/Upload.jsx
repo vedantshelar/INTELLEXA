@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllBusinessData } from "../../slices/dataSlice";
+const backend_url = import.meta.env.VITE_BACKEND_URL;
 
 const Upload = () => {
   const dispatch = useDispatch()
@@ -43,7 +44,7 @@ const Upload = () => {
 
       const formData = new FormData();
       formData.append("file", selectedFile);
-      const response = await axios.post("http://localhost:3000/data", formData,{withCredentials:true});
+      const response = await axios.post(`${backend_url}/data`, formData,{withCredentials:true});
       console.log(response);
       setStatus(
         `✅ ${selectedFile.name} uploaded successfully. Ready for AI analysis.`
