@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./SignInSignUpPage.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const backend_url = import.meta.env.VITE_BACKEND_URL;
 
 const SignInSignUpPage = () => {
+  const [isLoading,setIsLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true);
   const [user,setUser] = useState({
     name:"",
@@ -31,11 +33,12 @@ const SignInSignUpPage = () => {
   }
 
   async function handleSignin(){
+    setIsLoading(true);
     try {
       if(user.email=="" || user.password==""){
         alert("Fields can not be empty!");
       }else{
-        let response = await axios.post("http://localhost:3000/auth/login",{email:user.email,password:user.password},{
+        let response = await axios.post(`${backend_url}/auth/login`,{email:user.email,password:user.password},{
           withCredentials: true
         });
         console.log("response is : ",response);
@@ -51,14 +54,16 @@ const SignInSignUpPage = () => {
       console.log("error : ",error)
       alert("Logged In Failed!");
     }
+    setIsLoading(false);
   }
 
   async function handleSignUp(){
+    setIsLoading(true);
     try {
       if(user.name=="" || user.email=="" || user.mobileNo=="" || user.password==""){
         alert("Fields can not be empty!");
       }else{
-        let response = await axios.post("http://localhost:3000/auth/register",user,{
+        let response = await axios.post(`${backend_url}/auth/register`,user,{
           withCredentials: true
         });
         console.log("response is : ",response);
@@ -78,10 +83,11 @@ const SignInSignUpPage = () => {
       console.log("error : ",error)
       alert("Could not create account Please try again!");
     }
+    setIsLoading(false);
   }
 
   useEffect(() => {
-    axios.get("http://localhost:3000/auth/isUserLoggedIn", {
+    axios.get(`${backend_url}/auth/isUserLoggedIn`, {
       withCredentials: true
     })
     .then(res => {
@@ -147,9 +153,11 @@ const SignInSignUpPage = () => {
             className={styles.input}
           />
 
-          <button type="button" className={styles.primaryBtn} onClick={()=>{{isSignUp ? handleSignUp():handleSignin()}}}>
+          {isLoading ?  <button type="button" className={styles.primaryBtn}>
+            Loading...
+          </button> :  <button type="button" className={styles.primaryBtn} onClick={()=>{{isSignUp ? handleSignUp():handleSignin()}}}>
             {isSignUp ? "Create Account" : "Sign In"}
-          </button>
+          </button> }
         </form>
 
         {/* Divider */}
