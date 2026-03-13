@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require("../models/User");
 const { protect } = require('../uitls/methods');
 
-// Define a route for the user home page
 router.get('/', (req, res) => {
     res.send('Users home page');
   });

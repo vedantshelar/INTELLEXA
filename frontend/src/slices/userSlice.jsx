@@ -37,20 +37,20 @@ export const userSlice = createSlice({
     extraReducers: (builder) => {
       builder
   
-        // 🔵 Pending
+        // Pending
         .addCase(getUserData.pending, (state) => {
           state.loading = true;
           state.error = false;
         })
   
-        // 🟢 Fulfilled
+        // Fulfilled
         .addCase(getUserData.fulfilled, (state, action) => {
           state.loading = false;
           state.user = action.payload;
           state.error = false;
         })
   
-        // 🔴 Rejected
+        // Rejected
         .addCase(getUserData.rejected, (state, action) => {
           state.loading = false;
           state.user = null;

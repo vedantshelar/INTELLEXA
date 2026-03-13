@@ -31,14 +31,12 @@ router.post("/register", async (req, res) => {
       password: hash
     });
 
-    // ✅ Generate JWT
     const token = generateToken(user._id);
 
-    // ✅ Send token as COOKIE
     res.cookie("token", token, {
       httpOnly: true,
-      secure: true,          // must be true for HTTPS
-      sameSite: "none",      // required for cross-site cookies
+      secure: true,          // change to false when you are in development phase
+      sameSite: "none",      // change to lax when you are in devlopment phase
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -60,7 +58,6 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check if user exists
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -70,7 +67,6 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
@@ -80,18 +76,16 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // Generate token
     const token = jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
-    // Send cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: true,          // must be true for HTTPS
-      sameSite: "none",      // required for cross-site cookies
+      secure: true,          // change to false when you are in development phase
+      sameSite: "none",        // change to lax when you are in devlopment phase
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 

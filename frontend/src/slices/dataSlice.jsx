@@ -36,20 +36,20 @@ export const dataSlice = createSlice({
     extraReducers: (builder) => {
       builder
   
-        // 🔵 Pending
+        // Pending
         .addCase(getAllBusinessData.pending, (state) => {
           state.loading = true;
           state.error = false;
         })
   
-        // 🟢 Fulfilled
+        // Fulfilled
         .addCase(getAllBusinessData.fulfilled, (state, action) => {
           state.loading = false;
           state.data = action.payload;
           state.error = false;
         })
   
-        // 🔴 Rejected
+        // Rejected
         .addCase(getAllBusinessData.rejected, (state, action) => {
           state.loading = false;
           state.data = null;

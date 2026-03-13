@@ -21,13 +21,12 @@ const generateIntellexaInsights = async (prompt) => {
         },
       ],
       temperature: 0.3,
-      response_format: { type: "json_object" } // ⭐ forces JSON
+      response_format: { type: "json_object" } 
     });
 
     const responseText =
       completion.choices[0].message.content;
 
-    // convert string → JSON
     const parsedResponse = JSON.parse(responseText);
 
     return parsedResponse;
@@ -44,14 +43,12 @@ function groupDataByYearMonthDay(data) {
 
   data.forEach((item) => {
 
-    // Extract date parts
     const dateObj = new Date(item.date);
 
     const year = dateObj.getFullYear();
     const month = String(dateObj.getMonth() + 1).padStart(2, "0");
     const day = String(dateObj.getDate()).padStart(2, "0");
 
-    // Initialize structure
     if (!result[year]) {
       result[year] = {};
     }
@@ -60,7 +57,6 @@ function groupDataByYearMonthDay(data) {
       result[year][month] = {};
     }
 
-    // Store cleaned numeric values
     result[year][month][day] = {
       ...item,
       total_customers: Number(item.total_customers),
@@ -83,7 +79,7 @@ function extractModelFeatures(data) {
     const d = new Date(row.date);
 
     return {
-      // ===== Date Features =====
+
       year: d.getFullYear(),
       month: d.getMonth() + 1,
       day: d.getDate(),
@@ -91,14 +87,12 @@ function extractModelFeatures(data) {
       is_weekend:
         d.getDay() === 0 || d.getDay() === 6 ? 1 : 0,
 
-      // ===== Business Features =====
       total_customers: Number(row.total_customers),
       avg_order_value: Number(row.avg_order_value),
       returning_customers: Number(row.returning_customers),
       new_customers: Number(row.new_customers),
       marketing_spend: Number(row.marketing_spend),
 
-      // ===== Target =====
       daily_revenue: Number(row.daily_revenue)
     };
 
@@ -117,14 +111,12 @@ const formatPredictedDailyRevenue = (predictionResponse) => {
 
   const predictions = predictionResponse.predictions;
 
-  // Sort by day (important for graph order)
   const sortedPredictions = predictions.sort(
     (a, b) => a.day - b.day
   );
 
-  // Convert into LineChart format
   const lineChartData = sortedPredictions.map(item => ({
-    day: String(item.day), // Day number → X-axis
+    day: String(item.day), 
     revenue: Number(
       item.predicted_revenue.toFixed(2)
     )
@@ -237,7 +229,7 @@ const getLineChartData = (data, days) => {
 
   const filtered = filterByDays(data, days);
 
-  // ✅ YEAR VIEW → Monthly aggregation
+  // YEAR VIEW → Monthly aggregation
   if (days === 365) {
 
     const monthly = {};
@@ -260,7 +252,7 @@ const getLineChartData = (data, days) => {
     );
   }
 
-  // ✅ 7 / 30 DAYS → Relative timeline
+  // 7 / 30 DAYS → Relative timeline
   return filtered.map((item, index) => ({
     name: String(index + 1),   // ⭐ FIXED
     uv: Number(item.daily_revenue)
@@ -331,9 +323,7 @@ const prepareLLMInput = (finalData) => {
     lineChartData
   } = finalData;
 
-  /* ===============================
-        Prediction Summary
-  =============================== */
+  // Prediction Summary
 
   const predictedRevenues =
     lineChartData.map(d => d.revenue);
@@ -348,9 +338,8 @@ const prepareLLMInput = (finalData) => {
   const minRevenue =
     Math.min(...predictedRevenues);
 
-  /* ===============================
-        Growth Analysis
-  =============================== */
+
+  // Growth Analysis
 
   const revenueTrend =
     last30DaysKPIs.revenueGrowth > 0
@@ -362,9 +351,8 @@ const prepareLLMInput = (finalData) => {
       ? "positive"
       : "negative";
 
-  /* ===============================
-        Customer Behaviour
-  =============================== */
+
+  //      Customer Behaviour
 
   const retention =
     last30DaysKPIs.retentionRate;
@@ -376,9 +364,7 @@ const prepareLLMInput = (finalData) => {
   else if (retention > 70)
     retentionStatus = "strong";
 
-  /* ===============================
-        FINAL LLM SAFE OBJECT
-  =============================== */
+   //     FINAL LLM SAFE OBJECT
 
   const dataForLLM = {
 
@@ -413,9 +399,7 @@ const prepareLLMInput = (finalData) => {
     }
   };
 
-  /* ===============================
-        LLM PROMPT
-  =============================== */
+  //        LLM PROMPT
 
   const prompt = `
 You are an expert AI Business Analyst working for Intellexa.
@@ -497,7 +481,7 @@ const generateToken = (userId) => {
 
 const protect = async (req, res, next) => {
   try {
-    // Get token from cookie
+
     const token = req.cookies.token;
 
     if (!token) {
@@ -507,10 +491,8 @@ const protect = async (req, res, next) => {
       });
     }
 
-    // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Get user from DB (exclude password)
     const user = await User.findById(decoded.id).select("-password");
 
     if (!user) {
@@ -571,7 +553,6 @@ ${question}
 
     const response = completion.choices[0].message.content;
 
-    // Try parsing JSON
     try {
       return JSON.parse(response);
     } catch {

@@ -83,7 +83,7 @@ const AiAssistant = () => {
 
   async function getChats(businessDataId) {
     const response = await axios.get(
-      `http://localhost:3000/chats/${businessDataId}`,
+      `${backend_url}/chats/${businessDataId}`,
       { withCredentials: true }
     )
     let messagesObjectArray = response.data.data;

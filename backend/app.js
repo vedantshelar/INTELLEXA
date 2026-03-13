@@ -36,7 +36,7 @@ const upload = multer({ storage });
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.FRONTED_URL, // React frontend URL
+    origin: process.env.FRONTED_URL,
     credentials: true
   })
 );
@@ -50,14 +50,13 @@ app.use('/auth', authRoutes);
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("API is running 🚀");
+  res.send("API is running");
 });
 
 app.post("/data", upload.single("file"),protect,async (req, res, next) => {
  
   try {
 
-    // ✅ Check upload first
     if (!req.file) {
       return res.status(400).json({ error: "No file uploaded" });
     }
@@ -67,9 +66,8 @@ app.post("/data", upload.single("file"),protect,async (req, res, next) => {
 
     let jsonData = [];
 
-    // =========================
-    // ✅ EXCEL FILE
-    // =========================
+    // EXCEL FILE
+
     if (fileType === "xlsx" || fileType === "xls") {
       let finalData = {};
 
@@ -116,9 +114,9 @@ app.post("/data", upload.single("file"),protect,async (req, res, next) => {
       });
     }
 
-    // =========================
-    // ✅ CSV FILE
-    // =========================
+
+    //  CSV FILE
+
     else if (fileType === "csv") {
       let finalData = {};
 
@@ -211,9 +209,8 @@ app.post("/data", upload.single("file"),protect,async (req, res, next) => {
       });
     }
 
-    // =========================
-    // ❌ Unsupported
-    // =========================
+    // Unsupported
+
     else {
       return res.status(400).json({
         success:false,
@@ -229,12 +226,12 @@ app.post("/data", upload.single("file"),protect,async (req, res, next) => {
   }
 });
 
-// ✅ GET ALL BUSINESS DATA
+// GET ALL BUSINESS DATA
 app.get("/businessData", protect, async (req, res) => {
   try {
 
     const data = await BusinessData
-      .find({ userId: req.user._id }) // only logged user
+      .find({ userId: req.user._id })
       .sort({ createdAt: -1 }); // latest first
 
     return res.json({
@@ -252,7 +249,7 @@ app.get("/businessData", protect, async (req, res) => {
   }
 });
 
-app.post("/aiAssitant",protect,async (req,res,next)=>{ // implement aiAsistance in fronted as well as in backend 
+app.post("/aiAssitant",protect,async (req,res,next)=>{
   try {
     const {summary,question,businessDataId} = req.body;
     const userId = req.user._id;
