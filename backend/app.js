@@ -84,7 +84,10 @@ app.post("/data", upload.single("file"),protect,async (req, res, next) => {
       console.log("ml ready data : " + mlReadyData)
       const response = await axios.post(
         `${process.env.ML_SERVICE_URL}/predict`,
-        mlReadyData
+        mlReadyData,
+        {
+          timeout: 120000 // 2 minutes
+        }
       );
 
       const lineChartData =
