@@ -254,7 +254,7 @@ const getLineChartData = (data, days) => {
 
   // 7 / 30 DAYS → Relative timeline
   return filtered.map((item, index) => ({
-    name: String(index + 1),   // ⭐ FIXED
+    name: String(index + 1),  
     uv: Number(item.daily_revenue)
   }));
 };
@@ -286,7 +286,7 @@ const getBarChartData = (data, days) => {
   }
 
   return filtered.map((item, index) => ({
-    name: String(index + 1),   // ⭐ FIXED
+    name: String(index + 1), 
     pv: Number(item.total_customers)
   }));
 };

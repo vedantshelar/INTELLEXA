@@ -1,16 +1,22 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from predictor import predict_future
 
 app = Flask(__name__)
 
+CORS(app,
+     origins=["https://intellexaa.netlify.app"], 
+     supports_credentials=True)
+ 
 port = int(os.environ.get("PORT", 10000))
 
 @app.route("/")
 def home():
     return {
         "status": "Intellexa ML Service Running",
-        "service": "ML Prediction API"
+        "service": "ML Prediction API",
+        "success":True
     }
 
 @app.route("/predict", methods=["POST"])

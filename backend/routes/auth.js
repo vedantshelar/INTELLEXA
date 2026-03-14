@@ -145,7 +145,7 @@ router.post("/logout", (req, res) => {
     res.clearCookie("token", {
       httpOnly: true,
       secure: true, // true in production (https)
-      sameSite: "none"
+      sameSite: "none" // make none in production
     });
 
     res.json({

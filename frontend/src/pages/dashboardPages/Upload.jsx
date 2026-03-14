@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Upload.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllBusinessData } from "../../slices/dataSlice";
 const backend_url = import.meta.env.VITE_BACKEND_URL;
+const ml_service_url = import.meta.env.VITE_ML_SERVICE_URL;
 
 const Upload = () => {
   const dispatch = useDispatch()
   const [selectedFile, setSelectedFile] = useState(null);
   const [isLoading,setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [isMlServiceLoading,setIsMlServiceLoading] = useState(false);
   const navigate = useNavigate();
+
+  async function wakeupMlService(){
+    console.log("inside")
+    setIsMlServiceLoading(true);
+    const response = await axios.get(ml_service_url);
+    if(response.data.success){
+      setIsMlServiceLoading(false);
+    }else{
+      setIsMlServiceLoading(true);
+    }
+  }
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -34,29 +47,37 @@ const Upload = () => {
   };
 
   const handleUpload = async () => {
-    try {
-      setIsLoading(true);
-      if (!selectedFile) {
-        setStatus("❌ Please select a file before uploading.");
+    if(isMlServiceLoading){
+      alert("Wait Server is gettting Loaded!");
+    }else{
+      try {
+        setIsLoading(true);
+        if (!selectedFile) {
+          setStatus("❌ Please select a file before uploading.");
+          setIsLoading(false);
+          return;
+        }
+  
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        const response = await axios.post(`${backend_url}/data`, formData,{withCredentials:true});
+        console.log(response);
+        setStatus(
+          `✅ ${selectedFile.name} uploaded successfully. Ready for AI analysis.`
+        );
         setIsLoading(false);
-        return;
+        dispatch(getAllBusinessData());
+        navigate("/dashboard/graphs/")
+      } catch (error) {
+        console.log(error)
+        alert("Error Occured While Uploading File , Please Try Again!");
       }
-
-      const formData = new FormData();
-      formData.append("file", selectedFile);
-      const response = await axios.post(`${backend_url}/data`, formData,{withCredentials:true});
-      console.log(response);
-      setStatus(
-        `✅ ${selectedFile.name} uploaded successfully. Ready for AI analysis.`
-      );
-      setIsLoading(false);
-      dispatch(getAllBusinessData());
-      navigate("/dashboard/graphs/")
-    } catch (error) {
-      console.log(error)
-      alert("Error Occured While Uploading File , Please Try Again!");
     }
   };
+
+  useEffect(()=>{
+    wakeupMlService();
+  },[])
 
   return (
     <div className={styles.container}>
@@ -94,7 +115,7 @@ const Upload = () => {
           </div>
 
           {!isLoading && <button className={styles.uploadBtn} onClick={handleUpload}>
-            Upload File
+           {!isMlServiceLoading ? "Upload File":"Wait, Server Getting Ready..."}
           </button>}
           {isLoading && <button className={styles.uploadBtn}>
             Analysing....
